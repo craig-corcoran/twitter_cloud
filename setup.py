@@ -33,7 +33,7 @@ setup(
                  'tweet_cloud'},
     entry_points={
         'console_scripts': [
-            'tweet_cloud=tweet_cloud.cli:main'
+            'twcloud=tweet_cloud.cli:main'
         ]
     },
     include_package_data=True,

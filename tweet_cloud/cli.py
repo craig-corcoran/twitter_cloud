@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-
 import click
-from tweet_cloud.tweet_cloud import tweet_cloud
+from .tweet_cloud import tweet_cloud
 
 
 @click.command()
