@@ -1,10 +1,9 @@
-import sys
 import twitter
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from wordcloud import WordCloud
 import matplotlib
-import click
+
 
 def tweet_cloud(user=None, count=None, img_filename=None):
     '''
