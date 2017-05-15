@@ -1,11 +1,10 @@
 import twitter
-import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from wordcloud import WordCloud
 import matplotlib
 
 
-def tweet_cloud(user=None, count=None, img_filename=None):
+def tweet_cloud(user='realDonaldTrump', count=200, img_filename='twitter_cloud.png'):
     '''
     Create a wordcloud image from user's most recent tweets
     :param count: number of tweets to use (max 200?)
@@ -17,13 +16,14 @@ def tweet_cloud(user=None, count=None, img_filename=None):
     matplotlib.use('TkAgg')  # must be done before importing pyplot
     import matplotlib.pyplot as plt
 
-    key_frame = pd.read_csv('keys.csv')
+    with open('keys.json') as f:
+        keys = json.load(f, "r")
 
     api = twitter.Api(
-        consumer_key=key_frame['consumer_key'][0],
-        consumer_secret=key_frame['consumer_secret'][0],
-        access_token_key=key_frame['access_token'][0],
-        access_token_secret=key_frame['access_secret'][0],
+        consumer_key=keys['consumer_key'],
+        consumer_secret=keys['consumer_secret'],
+        access_token_key=keys['access_token'],
+        access_token_secret=keys['access_secret'],
     )
 
     tweets = api.GetUserTimeline(screen_name=user, count=count)
